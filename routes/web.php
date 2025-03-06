@@ -25,8 +25,9 @@ use App\Http\Controllers\admin\CategoriesController;
 use App\Http\Controllers\admin\GalleriesController;
 use App\Http\Controllers\admin\ToursController;
 use App\Http\Controllers\admin\BookingsController;
+use App\Http\Controllers\admin\NewController;
 use App\Http\Controllers\admin\TimeLinesController;
-
+use App\Http\Controllers\clients\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +48,7 @@ Route::get('/destination', [DestinationController::class , 'index'])->name('dest
 Route::get('/service', [ServicesController::class , 'index'])->name('service');
 Route::get('/testimonial', [TestimonialController::class , 'index'])->name('testimonial');
 Route::get('/tour', [TourController::class , 'index'])->name('tour');
-Route::get('/tour-cate/{id}', [TourController::class , 'index'])->name('tour_cate');
+Route::get('/tour-cate/{id}', [TourController::class , 'tourCate'])->name('tour_cate');
 Route::get('/tour-detail/{id}', [TourDetailController::class , 'index'])->name('tour_detail');
 Route::get('/travel-guides', [TravelGuidesController::class , 'index'])->name('travel_guides');
 
@@ -62,6 +63,8 @@ Route::get('/search-tours', [SearchController::class, 'search'])->name('search')
 Route::post('/booking/{id}', [BookingController::class , 'index'])->name('booking');
 Route::post('/submit-booking/{id}', [BookingController::class , 'booking'])->name('submit_booking');
 
+Route::get('/new', [ArticleController::class , 'index'])->name('new');
+Route::get('/new-detail/{id}', [ArticleController::class , 'new_detail'])->name('new_detail');
 
 
 Route::get('/loginn', [AuthController::class , 'login'])->name('loginn');
@@ -83,7 +86,7 @@ Route::post('/update_avata', [AccountController::class , 'update_avata'])->name(
 
 
 // admin
-Route::prefix('/admin')->middleware('middleware')->group(function () {
+Route::prefix('/admin')->group(function () {
     Route::get('/', function () {
         return redirect()->route('categories.index'); // Chuyển hướng đến trang danh mục
     });
@@ -103,5 +106,7 @@ Route::prefix('/admin')->middleware('middleware')->group(function () {
     Route::resource('bookings', BookingsController::class);
     Route::post('/booking-update/{id}', [BookingsController::class , 'update'])->name('update_booking');
 
+     // news
+     Route::resource('news', NewController::class);
 });
 

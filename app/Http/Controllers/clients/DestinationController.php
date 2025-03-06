@@ -3,16 +3,25 @@
 namespace App\Http\Controllers\clients;
 
 use App\Http\Controllers\Controller;
+use App\Models\clienrs\home;
 use Illuminate\Http\Request;
 
 class DestinationController extends Controller
 {
+
+    private $homeTour;
+
+    public function __construct()
+    {
+        $this->homeTour = new home();
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('client.destination');
+        $tours = $this->homeTour->gethomeTour();
+        return view('client.destination', compact('tours'));
     }
 
     /**

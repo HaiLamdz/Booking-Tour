@@ -51,12 +51,7 @@
                                                 <li><a href="404.html">404 Error</a></li>
                                             </ul>
                                         </li>
-                                        <li class="dropdown"><a href="#">blog</a>
-                                            <ul>
-                                                <li><a href="blog.html">blog List</a></li>
-                                                <li><a href="blog-details.html">blog details</a></li>
-                                            </ul>
-                                        </li>
+                                        <li><a href="{{route('new')}}">Tin Tức</a></li>
                                     </ul>
                                 </div>
 
