@@ -47,6 +47,7 @@
                             <span class="social-label">Or login with</span>
                             <ul class="socials">
                                 <li><a href="{{ route('auth.google') }}"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                                <li><a href="{{ route('auth.facebook') }}"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
                             </ul>
                         </div>
                     </div>

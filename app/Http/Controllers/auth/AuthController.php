@@ -153,4 +153,47 @@ class AuthController extends Controller
             dd($e->getMessage());
         }
     }
+
+
+    //login facebook
+    public function redirectToFacebook()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+          
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function handleFacebookCallback()
+    {
+        try {
+        
+            $user = Socialite::driver('facebook')->user();
+         
+            $findUser = User::where('email', $user->email)->first();
+         
+            if($findUser){
+         
+                AuthFacade::login($findUser);
+        
+                return redirect()->intended('/');
+         
+            }else{
+                $newUser = User::updateOrCreate(['email' => $user->email],[
+                        'name' => $user->name,
+                        'facebook_id'=> $user->id,
+                        'password' => encrypt('123456dummy')
+                    ]);
+        
+                    AuthFacade::login($newUser);
+        
+                return redirect()->intended('/');
+            }
+        
+        } catch (Exception $e) {
+            dd($e->getMessage());
+        }
+    }
 }

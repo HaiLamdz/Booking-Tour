@@ -80,6 +80,12 @@ Route::controller(AuthController::class)->group(function(){
     Route::get('auth/google/callback', 'handleGoogleCallback');
 });
 
+//login with facebook
+Route::controller(AuthController::class)->group(function(){
+    Route::get('auth/facebook', 'redirectToFacebook')->name('auth.facebook');
+    Route::get('auth/facebook/callback', 'handleFacebookCallback');
+});
+
 Route::get('/info', [AccountController::class , 'index'])->name('info');
 Route::post('/info', [AccountController::class , 'update_user'])->name('update_user');
 Route::post('/update_avata', [AccountController::class , 'update_avata'])->name('update_avata');
