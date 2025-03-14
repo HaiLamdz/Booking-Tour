@@ -32,17 +32,8 @@
               <i class="nav-icon bi bi-speedometer"></i>
               <p>
                 Dashboard
-                <i class="nav-arrow bi bi-chevron-right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./widgets/small-box.html" class="nav-link">
-                  <i class="nav-icon bi bi-circle"></i>
-                  <p>Dashboard</p>
-                </a>
-              </li>
-            </ul>
           </li>
 
           <li class="nav-item ">
